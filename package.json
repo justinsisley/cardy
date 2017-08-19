@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run watch",
-    "watch": "chokidar 'lib/*.js' 'test/*.js' -c 'npm run test'",
+    "watch": "chokidar 'src/*.js' 'test/*.js' -c 'npm run test'",
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register",
-    "build": "babel ./lib/index.js --out-file index.js --presets=es2015",
+    "build": "babel src --out-dir lib --presets=es2015",
     "prepare": "npm run build",
     "clean": "rm -rf node_modules package-lock.json && npm i"
   },

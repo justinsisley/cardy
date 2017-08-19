@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import index from '../lib/index';
+import index from '../src/index';
 
 describe('cardy', () => {
   it('should export an "expiration" property', () => {

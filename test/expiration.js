@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import * as expiration from '../lib/expiration';
+import * as expiration from '../src/expiration';
 
 describe('expiration', () => {
   it('should expose a "validate" function', () => {
