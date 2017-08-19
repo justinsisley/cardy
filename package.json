@@ -1,0 +1,19 @@
+{
+  "name": "cardy",
+  "version": "0.0.1",
+  "description": "A credit card utility belt for React apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinsisley/cardy.git"
+  },
+  "author": "Justin Sisley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinsisley/cardy/issues"
+  },
+  "homepage": "https://github.com/justinsisley/cardy#readme"
+}
