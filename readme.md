@@ -7,7 +7,7 @@
 </h3>
 
 <p align="center">
-  A credit card utility belt for React apps
+  A credit card utility belt for React and Node.js apps
 </p>
 
 <p align="center">
@@ -23,4 +23,5 @@ npm install cardy
 
 ## Credits
 
+- Depends on [card-validator](https://github.com/braintree/card-validator)
 - Icon by [Flaticon](http://www.flaticon.com/)

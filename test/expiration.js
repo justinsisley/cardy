@@ -2,10 +2,6 @@ import { assert } from 'chai';
 import * as expiration from '../src/expiration';
 
 describe('expiration', () => {
-  it('should expose a "validate" function', () => {
-    assert.isDefined(expiration.validate);
-  });
-
   describe('validate', () => {
     it('should reject falsey input', () => {
       assert.isFalse(expiration.validate().isValid);
