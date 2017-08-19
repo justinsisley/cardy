@@ -1,6 +1,4 @@
 node_modules
 coverage
-reports
 *.log
-.env
 .DS_Store

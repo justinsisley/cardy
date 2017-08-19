@@ -18,6 +18,10 @@ describe('expiration', () => {
 
       // Doesn't match allowed patterns
       assert.isFalse(expiration.validate('abcde').isValid);
+
+      // Month out of range
+      assert.isFalse(expiration.validate('02017').isValid);
+      assert.isFalse(expiration.validate('132017').isValid);
     });
 
     it('should accept valid input', () => {
@@ -62,15 +66,15 @@ describe('expiration', () => {
     it('should return a formatted expiration string from valid input', () => {
       // No slash or dash
       assert.equal(expiration.format('12017'), '01/2017');
-      assert.equal(expiration.format('012017'), '01/2017');
+      assert.equal(expiration.format('122017'), '12/2017');
 
       // Slash
       assert.equal(expiration.format('1/2017'), '01/2017');
-      assert.equal(expiration.format('01/2017'), '01/2017');
+      assert.equal(expiration.format('12/2017'), '12/2017');
 
       // Dash
       assert.equal(expiration.format('1-2017'), '01/2017');
-      assert.equal(expiration.format('01-2017'), '01/2017');
+      assert.equal(expiration.format('12-2017'), '12/2017');
     });
   });
 });
