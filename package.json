@@ -1,7 +1,7 @@
 {
   "name": "cardy",
   "version": "0.3.0",
-  "description": "A credit card utility belt for React and Node.js apps",
+  "description": "A credit card utility belt for browser and Node.js apps",
   "main": "index.js",
   "scripts": {
     "start": "npm run watch",

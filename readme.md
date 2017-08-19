@@ -7,7 +7,7 @@
 </h3>
 
 <p align="center">
-  A credit card utility belt for React and Node.js apps
+  A credit card utility belt for browser and Node.js apps
 </p>
 
 <p align="center">
