@@ -4,7 +4,12 @@
   "description": "A credit card utility belt for React apps",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "npm run watch",
+    "watch": "chokidar 'lib/*.js' 'test/*.js' -c 'npm run test'",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register",
+    "build": "babel ./lib/index.js --out-file index.js --presets=es2015",
+    "prepare": "npm run build",
+    "clean": "rm -rf node_modules package-lock.json && npm i"
   },
   "repository": {
     "type": "git",
@@ -12,8 +17,18 @@
   },
   "author": "Justin Sisley",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/justinsisley/cardy/issues"
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.1",
+    "chokidar-cli": "^1.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-mercenary": "^2.69.3",
+    "mocha": "^3.5.0"
   },
-  "homepage": "https://github.com/justinsisley/cardy#readme"
+  "dependencies": {
+    "card-validator": "^4.1.0"
+  }
 }
