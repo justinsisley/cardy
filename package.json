@@ -1,6 +1,6 @@
 {
   "name": "cardy",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A credit card utility belt for React and Node.js apps",
   "main": "index.js",
   "scripts": {
