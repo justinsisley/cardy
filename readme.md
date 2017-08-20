@@ -15,6 +15,8 @@
   <a href="https://www.npmjs.com/package/cardy"><img src="https://img.shields.io/npm/dm/cardy.svg?style=flat-square"></a>
 </p>
 
+#### <a href="https://htmlpreview.github.io/?https://github.com/justinsisley/cardy/blob/master/examples/index.html">Try out the demo</a>
+
 ## Quick Start
 
 ```bash
