@@ -9,8 +9,8 @@
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register",
     "coverage": "NODE_ENV=test babel-node ./node_modules/.bin/babel-istanbul cover _mocha --report html --report text -- --compilers js:babel-core/register",
     "build": "NODE_ENV=production babel src --out-dir lib --presets=env",
-    "examples:build": "npm run build && rollup -c",
-    "examples:watch": "chokidar '.babelrc' 'src/*.js' 'examples/index.html' -c 'npm run examples:build'",
+    "docs:build": "npm run build && rollup -c",
+    "docs:watch": "chokidar '.babelrc' 'src/*.js' 'docs/index.html' -c 'npm run docs:build'",
     "prepare": "npm run build",
     "clean": "rm -rf coverage node_modules package-lock.json && npm i"
   },
