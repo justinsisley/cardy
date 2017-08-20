@@ -48,3 +48,33 @@ export function format(input) {
 
   return split.join('');
 }
+
+export function mask(input) {
+  const cardValidatorResult = cardValidator.number(input);
+
+  if (!cardValidatorResult.isPotentiallyValid) {
+    return input.slice(0, -1);
+  }
+
+  if (!cardValidatorResult.card) {
+    return input;
+  }
+
+  const { gaps } = cardValidatorResult.card;
+
+  const condensed = input.replace(/\W/g, '');
+  const split = condensed.split('');
+
+  gaps.forEach((gap, index) => {
+    if (split.length > gap + index) {
+      split.splice(gap + index, 0, ' ');
+    }
+  });
+
+  // Input was already valid, with appropriate spacing, so return it
+  if (input.trim() === split.join('')) {
+    return input;
+  }
+
+  return split.join('');
+}

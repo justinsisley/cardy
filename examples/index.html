@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cardy examples</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="cardy.js"></script>
+  </head>
+  <body>
+    <header>
+      <img alt="cardy" src="https://image.flaticon.com/icons/svg/138/138287.svg" width="144">
+
+      <h1>cardy</h1>
+      <h2>A credit card utility belt for browser and Node.js apps</h2>
+
+      <p>
+        <a href="https://www.npmjs.com/package/cardy"><img src="https://img.shields.io/npm/v/cardy.svg?style=flat-square"></a>
+        <a href="https://www.npmjs.com/package/cardy"><img src="https://img.shields.io/npm/dm/cardy.svg?style=flat-square"></a>
+      </p>
+    </header>
+
+    <form>
+      <h3>Validation</h3>
+
+      <fieldset>
+        <label for="">Credit Card Number</label>
+        <input type="text" placeholder="1234 5678 9123 4567">
+        <button>Validate</button>
+      </fieldset>
+
+      <fieldset>
+        <label for="">Credit Card Expiration</label>
+        <input type="text" placeholder="mm/yyyy">
+        <button>Validate</button>
+      </fieldset>
+    </form>
+
+    <form>
+      <h3>Formatting</h3>
+
+      <fieldset>
+        <label for="">Credit Card Number</label>
+        <input type="text" placeholder="1234 5678 9123 4567">
+        <button>Format</button>
+      </fieldset>
+
+      <fieldset>
+        <label for="">Credit Card Expiration</label>
+        <input type="text" placeholder="mm/yyyy">
+        <button>Format</button>
+      </fieldset>
+    </form>
+
+    <form>
+      <h3>Input Masking</h3>
+
+      <fieldset>
+        <label for="">Credit Card Number</label>
+        <input type="text" placeholder="1234 5678 9123 4567" id="number-mask">
+      </fieldset>
+
+      <fieldset>
+        <label for="">Credit Card Expiration</label>
+        <input type="text" placeholder="mm/yyyy" id="expiration-mask">
+      </fieldset>
+    </form>
+
+    <script>
+    document.querySelector('#number-mask').addEventListener('input', (e) => {
+      e.target.value = cardy.number.mask(e.target.value);
+    });
+
+    document.querySelector('#expiration-mask').addEventListener('input', (e) => {
+      e.target.value = cardy.expiration.mask(e.target.value);
+    });
+    </script>
+  </body>
+</html>

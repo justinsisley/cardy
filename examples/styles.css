@@ -1,0 +1,90 @@
+::-webkit-input-placeholder { color: #ccc; }
+::-moz-placeholder { color: #ccc; }
+:-ms-input-placeholder { color: #ccc; }
+:-moz-placeholder { color: #ccc; }
+
+body {
+  font-family: sans-serif;
+}
+
+header {
+  margin-bottom: 75px;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+h2 {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+h3 {
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  border-bottom: 1px solid #bbb;
+}
+
+form {
+  padding: 0;
+  margin: 0 auto 75px;
+  width: 300px;
+}
+
+fieldset {
+  padding: 0;
+  margin-bottom: 30px;
+  border: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+input {
+  display: block;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 300;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #208FEC;
+}
+
+button {
+  display: block;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 300;
+  color: #fff;
+  background: #208FEC;
+  border: none;
+  border-radius: 3px;
+}
+
+input + button {
+  margin-top: 5px;
+}
+
+button:last-child {
+  margin-bottom: 10px;
+}

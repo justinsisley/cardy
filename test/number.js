@@ -78,4 +78,39 @@ describe('number', () => {
       assert.equal(number.format('340000000000009'), '3400 000000 00009');
     });
   });
+
+  describe('mask', () => {
+    it('should not add to the result unless the last character is valid', () => {
+      assert.equal(number.mask('a'), '');
+      assert.equal(number.mask('4a'), '4');
+      assert.equal(number.mask('41a'), '41');
+      assert.equal(number.mask('411a'), '411');
+      assert.equal(number.mask('4111a'), '4111');
+    });
+
+    it('should add to the result if the last character is valid', () => {
+      assert.equal(number.mask('4'), '4');
+      assert.equal(number.mask('41'), '41');
+      assert.equal(number.mask('411'), '411');
+      assert.equal(number.mask('4111'), '4111');
+      assert.equal(number.mask('4111 '), '4111 ');
+      assert.equal(number.mask('41111'), '4111 1');
+      assert.equal(number.mask('411111'), '4111 11');
+      assert.equal(number.mask('4111111'), '4111 111');
+      assert.equal(number.mask('41111111'), '4111 1111');
+      assert.equal(number.mask('411111111'), '4111 1111 1');
+      assert.equal(number.mask('4111111111'), '4111 1111 11');
+      assert.equal(number.mask('41111111111'), '4111 1111 111');
+      assert.equal(number.mask('411111111111'), '4111 1111 1111');
+      assert.equal(number.mask('4111111111111'), '4111 1111 1111 1');
+      assert.equal(number.mask('41111111111111'), '4111 1111 1111 11');
+      assert.equal(number.mask('411111111111111'), '4111 1111 1111 111');
+      assert.equal(number.mask('4111111111111111'), '4111 1111 1111 1111');
+
+      assert.equal(number.mask('4111111111111111'), '4111 1111 1111 1111');
+
+      assert.equal(number.format('5500000000000004'), '5500 0000 0000 0004');
+      assert.equal(number.format('340000000000009'), '3400 000000 00009');
+    });
+  });
 });

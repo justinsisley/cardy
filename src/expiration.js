@@ -1,6 +1,10 @@
 const minLength = '12017'.length;
 const maxLength = '01/2017'.length;
 
+// myyyy, m-yyyy, m/yyyy, mmyyyy, mm-yyyy, mm/yyyy
+const allowedPattern = /^([\d]{1,2})[-/]?([\d]{4})$/;
+const potentialMatchPattern = /^([\d]{1,2})([-/])?([\d]{1,4})*$/;
+
 export function validate(input) {
   const result = {
     month: undefined,
@@ -16,9 +20,8 @@ export function validate(input) {
     return result;
   }
 
-  // Must match one of the following formats:
-  // myyyy, m-yyyy, m/yyyy, mmyyyy, mm-yyyy, mm/yyyy
-  const patternMatch = /^([\d]{1,2})[-/]*([\d]{4})$/.exec(input);
+  // Must match one of the allowed patterns
+  const patternMatch = allowedPattern.exec(input);
   if (!patternMatch) {
     return result;
   }
@@ -53,4 +56,31 @@ export function format(input) {
   }
 
   return `${month}/${year}`;
+}
+
+export function mask(input) {
+  const patternMatch = potentialMatchPattern.exec(input);
+
+  if (!patternMatch) {
+    return input.slice(0, -1);
+  }
+
+  const month = patternMatch[1];
+  const delimiter = patternMatch[2];
+  const year = patternMatch[3];
+
+  let fullMonth = month;
+  if (delimiter && month.length < 2) {
+    fullMonth = `0${month}`;
+  }
+
+  if (!year) {
+    return `${fullMonth}${delimiter ? '/' : ''}`;
+  }
+
+  if (year.length > 0) {
+    return `${fullMonth}/${year}`;
+  }
+
+  return input.replace('-', '/');
 }
