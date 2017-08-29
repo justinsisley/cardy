@@ -9,5 +9,5 @@ export default {
     resolve(),
     commonjs(),
   ],
-  dest: 'examples/cardy.js',
+  dest: 'docs/cardy.js',
 };
