@@ -50,14 +50,16 @@
 
       <fieldset>
         <label for="">Credit Card Number</label>
-        <input type="text" placeholder="1234 5678 9123 4567">
-        <button>Validate</button>
+        <input type="text" placeholder="1234 5678 9123 4567" id="validation-number">
+        <button id="validate-number-button">Validate</button>
+        <pre><code id="validate-number-result">{}</code></pre>
       </fieldset>
 
       <fieldset>
         <label for="">Credit Card Expiration</label>
-        <input type="text" placeholder="mm/yyyy">
-        <button>Validate</button>
+        <input type="text" placeholder="mm/yyyy" id="validation-expiration">
+        <button id="validate-expiration-button">Validate</button>
+        <pre><code id="validate-expiration-result">{}</code></pre>
       </fieldset>
     </form>
 
@@ -66,24 +68,78 @@
 
       <fieldset>
         <label for="">Credit Card Number</label>
-        <input type="text" placeholder="1234 5678 9123 4567">
-        <button>Format</button>
+        <input type="text" placeholder="1234 5678 9123 4567" id="formatting-number">
+        <button id="format-number-button">Format</button>
+        <pre><code id="format-number-result">...</code></pre>
       </fieldset>
 
       <fieldset>
         <label for="">Credit Card Expiration</label>
-        <input type="text" placeholder="mm/yyyy">
-        <button>Format</button>
+        <input type="text" placeholder="mm/yyyy" id="formatting-expiration">
+        <button id="format-expiration-button">Format</button>
+        <pre><code id="format-expiration-result">...</code></pre>
       </fieldset>
     </form>
 
+    <footer>
+      Built with <a href="https://github.com/braintree/card-validator">card-validator</a>.
+      <br>
+      Icon by <a href="http://www.flaticon.com/">Flaticon</a>.
+    </footer>
+
     <script>
+    // Number masking
     document.querySelector('#number-mask').addEventListener('input', (e) => {
       e.target.value = cardy.number.mask(e.target.value);
     });
 
+    // Expiration masking
     document.querySelector('#expiration-mask').addEventListener('input', (e) => {
       e.target.value = cardy.expiration.mask(e.target.value);
+    });
+
+    // Number validation
+    document.querySelector('#validate-number-button').addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const value = document.querySelector('#validation-number').value;
+      const result = cardy.number.validate(value);
+      const stringified = JSON.stringify(result, null, 2);
+
+      document.querySelector('#validate-number-result').textContent = stringified;
+    });
+
+    // Expiration validation
+    document.querySelector('#validate-expiration-button').addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const value = document.querySelector('#validation-expiration').value;
+      const result = cardy.expiration.validate(value);
+      const stringified = JSON.stringify(result, null, 2);
+
+      document.querySelector('#validate-expiration-result').textContent = stringified;
+    });
+
+    // Number formatting
+    document.querySelector('#format-number-button').addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const value = document.querySelector('#formatting-number').value;
+      const result = cardy.number.format(value);
+      const stringified = JSON.stringify(result);
+
+      document.querySelector('#format-number-result').textContent = stringified;
+    });
+
+    // Expiration formatting
+    document.querySelector('#format-expiration-button').addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const value = document.querySelector('#formatting-expiration').value;
+      const result = cardy.expiration.format(value);
+      const stringified = JSON.stringify(result);
+
+      document.querySelector('#format-expiration-result').textContent = stringified;
     });
     </script>
   </body>

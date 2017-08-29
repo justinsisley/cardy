@@ -2,12 +2,14 @@ import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 
 export default {
-  entry: 'lib/index.js',
-  format: 'umd',
-  moduleName: 'cardy',
+  input: 'lib/index.js',
+  output: {
+    file: 'docs/cardy.js',
+    format: 'iife',
+    name: 'cardy',
+  },
   plugins: [
     resolve(),
     commonjs(),
   ],
-  dest: 'docs/cardy.js',
 };

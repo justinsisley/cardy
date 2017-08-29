@@ -1,8 +1,5 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.cardy = factory());
-}(this, (function () { 'use strict';
+var cardy = (function () {
+'use strict';
 
 function unwrapExports (x) {
 	return x && x.__esModule ? x['default'] : x;
@@ -113,6 +110,8 @@ function mask(input) {
 }
 });
 
+unwrapExports(expiration);
+
 /*
  * Luhn algorithm implementation in JavaScript
  * Copyright (c) 2009 Nicholas C. Zakas
@@ -135,6 +134,8 @@ function mask(input) {
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+'use strict';
+
 function luhn10(identifier) {
   var sum = 0;
   var alt = false;
@@ -162,6 +163,8 @@ function luhn10(identifier) {
 }
 
 var luhn10_1 = luhn10;
+
+'use strict';
 
 var types = {};
 var VISA = 'visa';
@@ -360,7 +363,12 @@ creditCardType.types = {
   MAESTRO: MAESTRO
 };
 
-var index$4 = creditCardType;
+var creditCardType_1 = creditCardType;
+
+'use strict';
+
+
+
 
 function verification(card, isPotentiallyValid, isValid) {
   return {card: card, isPotentiallyValid: isPotentiallyValid, isValid: isValid};
@@ -379,7 +387,7 @@ function cardNumber(value) {
 
   if (!/^\d*$/.test(value)) { return verification(null, false, false); }
 
-  potentialTypes = index$4(value);
+  potentialTypes = creditCardType_1(value);
 
   if (potentialTypes.length === 0) {
     return verification(null, false, false);
@@ -408,6 +416,8 @@ function cardNumber(value) {
 }
 
 var cardNumber_1 = cardNumber;
+
+'use strict';
 
 var maxYear = 19;
 
@@ -467,11 +477,18 @@ function expirationYear(value) {
 
 var expirationYear_1 = expirationYear;
 
+'use strict';
+
 // Polyfill taken from <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray#Polyfill>.
 
 var isArray = Array.isArray || function (arg) {
   return Object.prototype.toString.call(arg) === '[object Array]';
 };
+
+'use strict';
+
+
+
 
 function parseDate(value) {
   var month, len, year, yearValid;
@@ -509,6 +526,8 @@ function parseDate(value) {
 
 var parseDate_1 = parseDate;
 
+'use strict';
+
 function verification$3(isValid, isPotentiallyValid, isValidForThisYear) {
   return {
     isValid: isValid,
@@ -543,6 +562,12 @@ function expirationMonth(value) {
 }
 
 var expirationMonth_1 = expirationMonth;
+
+'use strict';
+
+
+
+
 
 function verification$1(isValid, isPotentiallyValid, month, year) {
   return {
@@ -591,6 +616,8 @@ function expirationDate(value) {
 
 var expirationDate_1 = expirationDate;
 
+'use strict';
+
 var DEFAULT_LENGTH = 3;
 
 function includes(array, thing) {
@@ -633,6 +660,8 @@ function cvv(value, maxLength) {
 
 var cvv_1 = cvv;
 
+'use strict';
+
 var DEFAULT_MIN_POSTAL_CODE_LENGTH = 3;
 
 function verification$5(isValid, isPotentiallyValid) {
@@ -657,7 +686,9 @@ function postalCode(value, options) {
 
 var postalCode_1 = postalCode;
 
-var index$2 = {
+'use strict';
+
+var cardValidator = {
   number: cardNumber_1,
   expirationDate: expirationDate_1,
   expirationMonth: expirationMonth_1,
@@ -678,7 +709,7 @@ exports.mask = mask;
 
 
 
-var _cardValidator2 = _interopRequireDefault(index$2);
+var _cardValidator2 = _interopRequireDefault(cardValidator);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -764,7 +795,9 @@ function mask(input) {
 }
 });
 
-var index = createCommonjsModule(function (module, exports) {
+unwrapExports(number);
+
+var lib = createCommonjsModule(function (module, exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -787,8 +820,8 @@ exports.default = {
 };
 });
 
-var index$1 = unwrapExports(index);
+var index = unwrapExports(lib);
 
-return index$1;
+return index;
 
-})));
+}());
