@@ -14,15 +14,17 @@ export function validate(input) {
 
   result.isPotentiallyValid = cardValidatorResult.isPotentiallyValid;
 
+  if (cardValidatorResult.card) {
+    result.type = cardValidatorResult.card.type;
+    result.niceType = cardValidatorResult.card.niceType;
+
+    result.codeName = cardValidatorResult.card.code.name;
+    result.codeSize = cardValidatorResult.card.code.size;
+  }
+
   if (!cardValidatorResult.isValid) {
     return result;
   }
-
-  result.type = cardValidatorResult.card.type;
-  result.niceType = cardValidatorResult.card.niceType;
-
-  result.codeName = cardValidatorResult.card.code.name;
-  result.codeSize = cardValidatorResult.card.code.size;
 
   result.isValid = true;
 
