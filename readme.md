@@ -70,6 +70,17 @@ const expirationInput = document.querySelector('#card-expiration-input');
 expirationInput.addEventListener('input', (e) => {
   expirationInput.value = cardy.expiration.mask(expirationInput.value);
 });
+
+// Security code input field in your app
+const securityCodeInput = document.querySelector('#card-security-code-input');
+
+securityCodeInput.addEventListener('input', (e) => {
+  securityCodeInput.value = cardy.code.mask(securityCodeInput.value);
+
+  // Optionally, enforce the security code length by passing a valid `codeSize`
+  // value, which you can obtain from `card.number.validate()`
+  securityCodeInput.value = cardy.code.mask(securityCodeInput.value, 3);
+});
 ```
 
 ### Node.js

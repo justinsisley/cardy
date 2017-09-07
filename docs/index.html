@@ -43,6 +43,11 @@
         <label for="">Credit Card Expiration</label>
         <input type="text" placeholder="mm/yyyy" id="expiration-mask">
       </fieldset>
+
+      <fieldset>
+        <label for="">Credit Card Security Code</label>
+        <input type="text" placeholder="CVV" id="security-code-mask">
+      </fieldset>
     </form>
 
     <form>
@@ -96,6 +101,11 @@
     // Expiration masking
     document.querySelector('#expiration-mask').addEventListener('input', (e) => {
       e.target.value = cardy.expiration.mask(e.target.value);
+    });
+
+    // Security code masking
+    document.querySelector('#security-code-mask').addEventListener('input', (e) => {
+      e.target.value = cardy.code.mask(e.target.value);
     });
 
     // Number validation

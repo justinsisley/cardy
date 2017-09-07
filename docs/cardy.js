@@ -727,15 +727,17 @@ function validate(input) {
 
   result.isPotentiallyValid = cardValidatorResult.isPotentiallyValid;
 
+  if (cardValidatorResult.card) {
+    result.type = cardValidatorResult.card.type;
+    result.niceType = cardValidatorResult.card.niceType;
+
+    result.codeName = cardValidatorResult.card.code.name;
+    result.codeSize = cardValidatorResult.card.code.size;
+  }
+
   if (!cardValidatorResult.isValid) {
     return result;
   }
-
-  result.type = cardValidatorResult.card.type;
-  result.niceType = cardValidatorResult.card.niceType;
-
-  result.codeName = cardValidatorResult.card.code.name;
-  result.codeSize = cardValidatorResult.card.code.size;
 
   result.isValid = true;
 
@@ -797,6 +799,33 @@ function mask(input) {
 
 unwrapExports(number);
 
+var code = createCommonjsModule(function (module, exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.mask = mask;
+var patterns = {
+  3: /^\d{1,3}$/,
+  4: /^\d{1,4}$/
+};
+
+function mask(input) {
+  var maxLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 4;
+
+  var patternMatch = patterns[maxLength].exec(input);
+
+  if (!patternMatch) {
+    return input.slice(0, -1);
+  }
+
+  return input;
+}
+});
+
+unwrapExports(code);
+
 var lib = createCommonjsModule(function (module, exports) {
 'use strict';
 
@@ -812,11 +841,16 @@ var expiration$$1 = _interopRequireWildcard(expiration);
 
 var number$$1 = _interopRequireWildcard(number);
 
+
+
+var code$$1 = _interopRequireWildcard(code);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 exports.default = {
   expiration: expiration$$1,
-  number: number$$1
+  number: number$$1,
+  code: code$$1
 };
 });
 

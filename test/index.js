@@ -9,4 +9,8 @@ describe('cardy', () => {
   it('should export a "number" property', () => {
     assert.isDefined(index.number);
   });
+
+  it('should export a "code" property', () => {
+    assert.isDefined(index.code);
+  });
 });
