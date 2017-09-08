@@ -36,6 +36,21 @@ export function validate(input) {
 
   result.month = month;
   result.year = year;
+
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth() + 1;
+
+  // Year is in the past
+  if (year < currentYear) {
+    return result;
+  }
+
+  // Expired some time during the current year
+  if (year === currentYear && month < currentMonth) {
+    return result;
+  }
+
   result.isValid = true;
 
   return result;
